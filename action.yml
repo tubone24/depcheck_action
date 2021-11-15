@@ -1,0 +1,5 @@
+name: 'depcheck js'
+description: 'depcheck'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
