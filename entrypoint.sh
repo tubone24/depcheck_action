@@ -1,10 +1,10 @@
 #!/bin/sh -l
 
-output=`npx depcheck`
-echo ${output} > depcheck_output.txt
-cat depcheck_output.txt
-sed -i 's/\n/\\n/g' depcheck_output.txt
+output=`npx depcheck --json | jq`
+echo ${output} > depcheck_output.json
+cat depcheck_output.json
+sed -i 's/\n/\\n/g' depcheck_output.json
 curl -X POST \
      -H "Authorization: token ${GITHUB_TOKEN}" \
-     -d "{\"body\": \"$(cat depcheck_output.txt)\"}" \
+     -d "{\"body\": \"$(cat depcheck_output.json)\"}" \
      ${URL}
