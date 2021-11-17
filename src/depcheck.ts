@@ -1,5 +1,4 @@
-import {getInput, setFailed, setOutput, info} from '@actions/core'
-import {GitHub, context} from '@actions/github'
+import {getInput, setFailed, info} from '@actions/core'
 import depcheck from 'depcheck';
 
 
@@ -7,15 +6,10 @@ export const run = async (): Promise<void> => {
   try {
     const path = getInput('path', {required: false}) || '.';
     const unused = await runDepcheck(path);
-    const github = new GitHub(process.env.GITHUB_TOKEN);
-    const {owner, repo} = context.repo;
-    setOutput('id', updatedReleaseId.toString());
-    setOutput('html_url', updatedHtmlUrl);
-    setOutput('upload_url', updatedUploadUrl);
-    setOutput('name', updatedReleaseName);
-    setOutput('body', updatedBody);
-    setOutput('published_at', updatedPublishAt);
-    setOutput('tag_name', tag)
+    const dependencies = makeMarkdownList('dependencies', unused.dependencies)
+    const devdependencies = makeMarkdownList('devDependencies', unused.devDependencies)
+    info(dependencies)
+    info(devdependencies)
   } catch (error) {
     setFailed(error.message)
   }
@@ -39,6 +33,8 @@ const runDepcheck = async(path: string) => {
       // the target parsers
       '**/*.js': depcheck.parser.es6,
       '**/*.jsx': depcheck.parser.jsx,
+      '**/*.ts': depcheck.parser.typescript,
+      '**/*.tsx': depcheck.parser.jsx
     },
     detectors: [
       // the target detectors
@@ -68,3 +64,12 @@ const runDepcheck = async(path: string) => {
   // const missing = unused.missing;
   return {dependencies, devDependencies}
 };
+
+const makeMarkdownList = (title: string, list: string[]) => {
+  let text = '';
+  text += `- ${title}\n`
+  list.forEach((l) => {
+    text += '  - ${l}\n'
+  })
+  return text
+}
