@@ -1,7 +1,7 @@
 {
-  "name": "update_release",
+  "name": "depcheck_action",
   "version": "1.0.0",
-  "description": "Update release",
+  "description": "depcheck action",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -29,7 +29,9 @@
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.4",
     "@actions/github": "^2.2.0",
-    "depcheck": "^1.4.2"
+    "coffee-script": "^1.12.7",
+    "depcheck": "^1.4.2",
+    "node-sass": "^6.0.1"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",
