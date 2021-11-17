@@ -38,49 +38,7 @@ const run = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.run = run;
 const runDepcheck = (path) => __awaiter(void 0, void 0, void 0, function* () {
-    const options = {
-        ignoreBinPackage: false,
-        skipMissing: false,
-        ignorePatterns: [
-            // files matching these patterns will be ignored
-            'sandbox',
-            'dist',
-            'bower_components',
-        ],
-        ignoreMatches: [
-            // ignore dependencies that matches these globs
-            'grunt-*',
-        ],
-        parsers: {
-            // the target parsers
-            '**/*.js': depcheck_1.default.parser.es6,
-            '**/*.jsx': depcheck_1.default.parser.jsx,
-            '**/*.ts': depcheck_1.default.parser.typescript,
-            '**/*.tsx': depcheck_1.default.parser.jsx
-        },
-        detectors: [
-            // the target detectors
-            depcheck_1.default.detector.requireCallExpression,
-            depcheck_1.default.detector.importDeclaration,
-        ],
-        specials: [
-            // the target special parsers
-            depcheck_1.default.special.eslint,
-            depcheck_1.default.special.webpack,
-        ],
-        package: {
-            // may specify dependencies instead of parsing package.json
-            dependencies: {
-                lodash: '^4.17.15',
-            },
-            devDependencies: {
-                eslint: '^6.6.0',
-            },
-            peerDependencies: {},
-            optionalDependencies: {},
-        },
-    };
-    const unused = yield depcheck_1.default(path, options);
+    const unused = yield depcheck_1.default(path, {});
     const dependencies = unused.dependencies;
     const devDependencies = unused.devDependencies;
     // const missing = unused.missing;
