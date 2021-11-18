@@ -3,8 +3,6 @@
 GITHUB_TOKEN=$1
 PR_COMMENT_URL=$2
 
-echo $PR_COMMENT_URL
-
 output_json=`npx depcheck --json`
 echo ${output_json} > depcheck_output.json
 echo "# depcheck Result" > depcheck_output_pretty.txt
@@ -28,4 +26,4 @@ cat depcheck_output_pretty5.txt
 curl -X POST \
      -H "Authorization: token ${GITHUB_TOKEN}" \
      -d "{\"body\": \"$(cat depcheck_output_pretty5.txt)\"}" \
-     https://api.github.com/repos/tubone24/blog/issues/659/comments
+     ${PR_COMMENT_URL}
