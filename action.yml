@@ -1,13 +1,6 @@
-name: 'Depcheck Action'
-description: 'Depcheck Action'
+name: 'depcheck js'
+description: 'depcheck'
 author: 'tubone24'
-inputs:
-  path:
-    description: 'path'
-    required: false
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
-branding:
-  icon: 'tag'
-  color: 'green'
+  using: 'docker'
+  image: 'Dockerfile'
