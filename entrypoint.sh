@@ -11,14 +11,14 @@ cat depcheck_output.json | jq '.missing' >> depcheck_output_pretty.txt
 cat depcheck_output_pretty.txt
 #sed -i -z 's/\n/\\n/g' depcheck_output_pretty.txt
 sed -i 's/"/\"/g' depcheck_output_pretty.txt
-cat depcheck_output_pretty.txt | perl -pe 's/\n/\\n/g' > depcheck_output_pretty.txt
+cat depcheck_output_pretty.txt | perl -pe 's/\n/\\n/g' > depcheck_output_pretty2.txt
 echo "fixed3333"
-cat depcheck_output_pretty.txt
-# cat depcheck_output_pretty.txt | perl -pe 's/\"/\\"/g' > depcheck_output_pretty.txt
-sed -i 's/"/\"/g' depcheck_output_pretty.txt
+cat depcheck_output_pretty2.txt
+cat depcheck_output_pretty2.txt | perl -pe 's/\"/\\"/g' > depcheck_output_pretty3.txt
+# sed -i 's/"/\"/g' depcheck_output_pretty.txt
 echo "fixed"
-cat depcheck_output_pretty.txt
+cat depcheck_output_pretty3.txt
 curl -X POST \
      -H "Authorization: token ${GITHUB_TOKEN}" \
-     -d "{\"body\": \"$(cat depcheck_output_pretty.txt)\"}" \
+     -d "{\"body\": \"$(cat depcheck_output_pretty3.txt)\"}" \
      ${URL}
