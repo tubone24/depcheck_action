@@ -10,7 +10,8 @@ echo "Missing" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.missing' >> depcheck_output_pretty.txt
 cat depcheck_output_pretty.txt
 #sed -i -z 's/\n/\\n/g' depcheck_output_pretty.txt
-sed -i -z 's/"/\"/g' depcheck_output_pretty.txt
+#sed -i -z 's/"/\"/g' depcheck_output_pretty.txt
+cat depcheck_output_pretty.txt | perl -pe 's/\n/\\n/g' > depcheck_output_pretty.txt
 echo "fixed"
 cat depcheck_output_pretty.txt
 curl -X POST \
