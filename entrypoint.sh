@@ -25,5 +25,5 @@ echo "fixed"
 cat depcheck_output_pretty5.txt
 curl -X POST \
      -H "Authorization: token ${GITHUB_TOKEN}" \
-     -d "{\"body\": \"$(cat depcheck_output_pretty４.txt)\"}" \
-     ${PR_COMMENT_URL}
+     -d "{\"body\": \"$(cat depcheck_output_pretty5.txt)\"}" \
+     https://api.github.com/repos/tubone24/blog/issues/659/comments
