@@ -14,7 +14,7 @@ cat depcheck_output.json | jq '.devDependencies' >> depcheck_output_pretty.txt
 # echo "Missing" >> depcheck_output_pretty.txt
 # cat depcheck_output.json | jq '.missing' >> depcheck_output_pretty.txt
 cat depcheck_output_pretty.txt
-cat depcheck_output_pretty.txt | perl -pe 's/\n/\\n/g' | perl -pe 's/\",?$//g' | perl -pe 's/^\"/  - /g' | perl -pe 's/[\[|\]\{\}]//g' > depcheck_output_pretty3.txt
+cat depcheck_output_pretty.txt | perl -pe 's/\n/\\n/g' | perl -pe 's/\",?$//g' | perl -pe 's/^\"/  - /g' | perl -pe 's/[\[|\]\|{\|}]//g' > depcheck_output_pretty3.txt
 echo "fixed"
 cat depcheck_output_pretty3.txt
 curl -X POST \
