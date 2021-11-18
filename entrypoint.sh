@@ -3,6 +3,8 @@
 GITHUB_TOKEN=$1
 PR_COMMENT_URL=$2
 
+echo $PR_COMMENT_URL
+
 output_json=`npx depcheck --json`
 echo ${output_json} > depcheck_output.json
 echo "# depcheck Result" > depcheck_output_pretty.txt
