@@ -1,5 +1,8 @@
 #!/bin/sh -l
 
+GITHUB_TOKEN=$1
+URL=$2
+
 output_json=`npx depcheck --json`
 echo ${output_json} > depcheck_output.json
 echo "# depcheck Result" > depcheck_output_pretty.txt
