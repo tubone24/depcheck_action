@@ -11,6 +11,6 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-args:
-  - ${{ inputs.GITHUB_TOKEN }}
-  - ${{ inputs.PR_COMMENT_URL }}
+  args:
+    - ${{ inputs.GITHUB_TOKEN }}
+    - ${{ inputs.PR_COMMENT_URL }}
