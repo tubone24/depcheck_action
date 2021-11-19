@@ -45,7 +45,7 @@ on:
         with:
           node-version: 14.x
       - name: "depcheck"
-        uses: tubone24/depcheck_action@main
+        uses: tubone24/depcheck_action@v1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_COMMENT_URL: ${{ github.event.pull_request.comments_url }}
