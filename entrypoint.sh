@@ -9,7 +9,7 @@ echo "# depcheck Result" > depcheck_output_pretty.txt
 echo "List up libraries that are defined in dependencies and devDependencies in package.json but not used in your codes." >> depcheck_output_pretty.txt
 echo "- Unused dependencies" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.dependencies' >> depcheck_output_pretty.txt
-echo "- Unused dev dependencies" >> depcheck_output_pretty.txt
+echo "- Unused devdependencies" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.devDependencies' >> depcheck_output_pretty.txt
 echo "- Missing" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.missing' >> depcheck_output_pretty.txt
