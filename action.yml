@@ -14,3 +14,6 @@ runs:
   args:
     - ${{ inputs.GITHUB_TOKEN }}
     - ${{ inputs.PR_COMMENT_URL }}
+branding:
+  icon: 'tool'
+  color: 'green'
