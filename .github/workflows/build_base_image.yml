@@ -13,6 +13,6 @@ jobs:
       - name: docker login
         run: docker login docker.pkg.github.com -u tubone24 -p ${{ secrets.GITHUB_TOKEN }}
       - name: docker build
-        run: docker build -t docker.pkg.github.com/tubone24/depcheck_action/depcheck .
+        run: docker build -t docker.pkg.github.com/tubone24/depcheck_action/base -f Dockerfile_base .
       - name: docker push
-        run: docker push docker.pkg.github.com/tubone24/depcheck_action/depcheck
+        run: docker push docker.pkg.github.com/tubone24/depcheck_action/base
