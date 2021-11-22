@@ -1,8 +1,4 @@
-FROM node:lts-alpine3.14
+FROM ghcr.io/tubone24/depcheck_action/base:latest
 
-RUN apk --no-cache add curl
-RUN apk --no-cache add jq
-RUN apk --no-cache add perl
-RUN npm install -g depcheck typescript node-sass @vue/compiler-sfc
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
