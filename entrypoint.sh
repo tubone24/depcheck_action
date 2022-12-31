@@ -11,9 +11,13 @@ echo "<details>" >> depcheck_output_pretty.txt
 echo "<summary> - Unused dependencies </summary>" >> depcheck_output_pretty.txt
 echo "" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.dependencies' >> depcheck_output_pretty.txt
+echo "</details>" >> depcheck_output_pretty.txt
+echo "<details>" >> depcheck_output_pretty.txt
 echo "<summary> - Unused devdependencies </summary>" >> depcheck_output_pretty.txt
 echo "" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.devDependencies' >> depcheck_output_pretty.txt
+echo "</details>" >> depcheck_output_pretty.txt
+echo "<details>" >> depcheck_output_pretty.txt
 echo "<summary> - Missing <summary>" >> depcheck_output_pretty.txt
 echo "" >> depcheck_output_pretty.txt
 cat depcheck_output.json | jq '.missing' >> depcheck_output_pretty.txt
